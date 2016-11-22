@@ -32,6 +32,7 @@ plugins: [
     ],
     alias: {
       applicationStyles: 'app/styles/app.scss'
+      
     },
 
     extensions: ['', '.js','.jsx']
