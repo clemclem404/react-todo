@@ -17,13 +17,45 @@ module.exports = {
     } catch (e){
 
     }
-    // same as below but shorter :
-    //return $.isArray(todos) ? todos  : [];
 
-     if ($.isArray(todos)) {
-    return todos;
-    }else {
-      return [];
-    }
+    return $.isArray(todos) ? todos  : [];
+    },
+
+     // same but longer
+     //if ($.isArray(todos)) {
+    //return todos;
+    //}else {
+      //return [];
+  //  }
+
+
+// filter by showCompleted
+    filterTodos: function (todos, showCompleted, searchText) {
+      var filteredTodos = todos;
+
+      //Filter by showCompleted
+      filteredTodos = filteredTodos.filter((todo)=>{
+        return !todo.completed || showCompleted;
+      });
+
+      // filter by searchText
+      filteredTodos = filteredTodos.filter((todo)=>{
+      var text = todo.text.toLowerCase();
+      return searchText.length === 0 || text.indexOf(searchText) > -1;
+      });
+
+      // sort todos with non-completed first
+      filteredTodos.sort((a,b)=>{
+        if (!a.completed && b.completed) {
+          return -1;
+      } else if (a.completed && !b.completed) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+
+return filteredTodos;
+
   }
 };
