@@ -1,6 +1,9 @@
 var webpack = require ('webpack');
 var path = require ('path');
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+
 module.exports = {
 
   entry: [
@@ -16,6 +19,12 @@ plugins: [
   new webpack.ProvidePlugin({
     '$':'jquery',
     'jQuery': 'jquery'
+  }),
+
+  new webpack.optimize.UglifyJsPlugin({
+    compressor:{
+      warnings: false
+    }
   })
 
 ],
@@ -60,5 +69,5 @@ sassLoader: {
 
   ]
 },
-devtool:'cheap-module-eval-source-map'
+devtool: process.env.NODE_ENV === 'production' ? undefined : 'cheap-module-eval-source-map'
 };

@@ -140,7 +140,7 @@ it ('should generate update todo action', () => {
 
         expect(mockActions[0].type).toEqual('ADD_TODOS');
         expect(mockActions[0].todos.length).toEqual(1);
-        expect(mockActions[0].todos[0].text).toEqual('Something to do');
+        expect(mockActions[0].todos[0].text).toEqual('something to do');
 
         done();
       }, done)
