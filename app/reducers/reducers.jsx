@@ -22,6 +22,7 @@ export var showCompletedReducer = (state = false, action) => {
 };
 
 
+
 export var todosReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -49,6 +50,9 @@ export var todosReducer = (state = [], action) => {
             ...state,
             ...action.todos
           ];
+
+          case 'LOGOUT':
+            return[];
     default:
       return state;
   }
